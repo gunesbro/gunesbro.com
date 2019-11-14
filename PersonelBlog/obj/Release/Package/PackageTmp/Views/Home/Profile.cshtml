@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+
+</head>
+
+<div class="">
+
+    @* HEADER *@
+    @Html.Partial("Partials/Header", "Home")
+    @* HEADER *@
+
+    <div class="container-fluid">
+
+        <div class="container">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                @* POSTS *@
+                <div class="row">
+                    <h4 style="font-weight:bolder; text-align:center; background-color:black;padding:5px; color:white">ACCOUNT SETTINGS</h4>
+                    @{ Html.RenderAction("_AccountSettings","Home");}
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <h4 style="font-weight:bolder; text-align:center; background-color:black;padding:5px; color:white">QUESTIONS</h4>
+                    @{ Html.RenderAction("_ProfileQuestionList", "Home");}
+                </div>
+                <div class="row" >
+                    <h4 style="font-weight:bolder; text-align:center; background-color:black;padding:5px; color:white">ARCHIVE</h4>
+                    <p style="text-align:center">COMING SOON!</p>
+                </div>
+                @* POSTS *@
+            </div>
+            <div class="col-sm-4">
+
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+            </div>
+        </div>
+    </div>
+</div>

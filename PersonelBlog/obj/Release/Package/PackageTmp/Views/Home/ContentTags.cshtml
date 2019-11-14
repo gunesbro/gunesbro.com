@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PersonelBlog.Models.ContentWithTags>
+
+<div style="margin-top:7%;">
+    <div>
+        <span class="tag">
+            TAGS:
+        </span>
+
+        <div>
+            @foreach (var item in Model)
+            {
+                <a href="#" class="">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.Tags.TagName).ToString(), "TagSearch", new { id = item.Tags.TagId }, new { @class = "tagContext" })   
+                </a>
+            }
+           
+        </div>
+    </div>
+
+</div>

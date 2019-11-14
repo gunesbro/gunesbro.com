@@ -1,0 +1,35 @@
+﻿
+
+@model IEnumerable<PersonelBlog.Models.Pages>
+
+<div>
+    <div class="container-fluid take-a-Look">
+        <p class=" hidden-xs">Take a Look!</p>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Take(3))
+        {
+            <div class="col-sm-4 col-space">
+
+                <div class="w3-display-container">
+                    <div class="w3-display-bottommiddle w3-padding text-center bannerStyle">
+                        <p style="margin:0px; padding:0px;">@Html.DisplayFor(modelItem => item.PageTitle)</p>
+                        <div>
+
+                            @Html.ActionLink(@item.PageName, "Page", 
+                           new { id = item.PageId, ignoreThisBit = item.PageName.Replace(" ", "-").ToString() }, 
+                           new { @class = "btn btn-default contınue-reading" })
+                        </div>
+
+                    </div>
+                    <div class="anim">
+                        <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.PageImage)" 
+                             alt="@Html.DisplayFor(modelItem => item.PageTitle)">
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PersonelBlog.Models.InstagramEmbed>
+@{
+    ViewBag.Title = "Instagram";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">INSTAGRAM</h2>
+            </div>
+            @using (Html.BeginForm("SaveInstagramEmbed", "Account"))
+            {
+                <div>
+                    <div>
+                        <input type="tel" name="embedInsta" placeholder="Instagram Embed Here" class="form-control" />
+                    </div>
+                    <div>
+                        <input type="submit" value="SAVE" class="form-control btn btn-danger" style="margin-top:15px; margin-bottom:15px;" />
+                    </div>
+                </div>
+            }
+
+
+            <div class="table-responsive" style="border:1px solid white;">
+                @foreach (var item in Model)
+                {
+                    using (Html.BeginForm("DeleteInstagramEmbed", "Account", new { embedId =  item.Id}))
+                    {
+                        <div class="col-sm-4" style="margin-bottom:15px;">
+                            <div class="row">
+                                @Html.Raw(item.InstagramEmbed1)
+                            </div>
+                            <div class="row">
+                                <input type="submit" value="Delete" class="btn btn-danger" style="width:100%;" onclick="return confirm('Are you sure you wish to delete this post?');" />
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+
+        </div>
+    </section>
+</div>
+

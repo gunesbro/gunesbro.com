@@ -1,0 +1,84 @@
+﻿@model IEnumerable<PersonelBlog.Models.Content>
+@using PagedList
+@using PagedList.Mvc
+@using Microsoft.Web.Helpers
+
+@foreach (var item in Model)
+{
+    <div style="margin-top:5%;">
+        <div class="text-center">
+            <div class="postCategory">
+                <a href="">
+                    @Html.ActionLink(@item.Pages.PageName, "Page", new { id = item.Pages.PageId, ignoreThisBit = @item.Pages.PageName.Replace(" ", "-") }, new { @class = "" })
+                </a>
+            </div>
+            <div>
+                <h2 class="postTitle">
+                    <span>
+                        @Html.DisplayFor(modelItem => item.ContentHeader)
+                    </span>
+                </h2>
+            </div>
+            <div class="postInfo">
+                <p>@Html.DisplayFor(modelItem => item.User.UserName) - @Html.DisplayFor(modelItem => item.PostDate)</p>
+            </div>
+        </div>
+        <div>
+            <a href="/Home/Content/@item.ContentHeader.Replace(" ","-").ToString()/@item.ContentId">
+                <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.ContentImage)" />
+            </a>
+        </div>
+        <div class="text-left" style="margin-top:6%;">
+            <p class="postText">
+                @if (item.ContentText.ToString().Count() > 400)
+                {
+                    @Html.Raw("<div class=postText>" + item.ContentText.ToString().Substring(0, 400) + "</div>")
+                    @*@Html.DisplayFor(modelItem => item.ContentText).ToString().Substring(0, 400)*@
+                }
+                else
+                {
+                    @Html.Raw("<div class=postText>" + item.ContentText.ToString() + "</div>")
+                    @*@Html.DisplayFor(modelItem => item.ContentText).ToString()*@
+                }
+
+            </p>
+        </div>
+        <div class="text-center">
+            @*<a class="btn btn-default contınue-reading" style="margin-left:auto; margin-right:auto;">
+                    CONTINUE READING
+                </a>*@
+
+            @Html.ActionLink("CONTINUE READING", "Content", 
+           new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ", "-").ToString() }, 
+           new { @class = "btn btn-default contınue-reading" })
+
+
+        </div>
+
+        <div class="postShare">
+            <div class="comment">
+                <p>
+                    @item.Comment.Count() comments
+                </p>
+                @*<div class="align-right">
+                    <div style="float:right">
+                        <div class="btn btn-default " style="margin-top:-15px; margin-left:5px;">
+                            @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Twitter })
+                        </div>
+                        <div class="btn btn-default" style="margin-top:-15px;">
+                            @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Reddit })
+                        </div>
+                        <div class="btn btn-default" style="margin-top:-15px;">
+                            @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Facebook })
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container-fluid">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+</div>

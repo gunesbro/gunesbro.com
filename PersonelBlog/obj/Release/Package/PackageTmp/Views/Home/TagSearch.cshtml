@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Tag";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+</head>
+
+<div>
+    @* HEADER *@
+    @Html.Partial("Partials/Header", "Home")
+    @* HEADER *@
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-8">
+
+                <div class="text-left" style="margin-top:4%; font-size:14px; color:#441b00; border-bottom:1px solid #eee; border-top:1px solid #eee; padding-left:1%;">
+                    <span>
+                        Showing posts with tag 
+                        @Html.Action("TagName", "Home") 
+                    </span>
+                </div>
+
+                @* POSTS *@
+                <div style="margin-top:5%;">
+                    @Html.Action("TagContents", "Home")
+                </div>
+                @* POSTS *@
+            </div>
+            <div class="col-sm-4">
+
+                @* ABOUT ME *@
+                @Html.Action("AboutMe", "Home")
+                @* ABOUT ME *@
+
+
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGORIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+                @* INSTAGRAM *@
+                @Html.Partial("Partials/Instagram", "Home")
+                @* INSTAGRAM *@
+
+            </div>
+        </div>
+    </div>
+
+</div>

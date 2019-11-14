@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "CreateEditor";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">
+                    @Html.ActionLink("EDITOR", "Editor")
+                </h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>CREATE NEW</h2>
+            </div>
+            @using (Html.BeginForm("CreateEditor", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="table-responsive">
+                    <div>
+                        <input type="text" value="" name="txtName" class="form-group form-control" style="padding-left:10px;" placeholder="Name" />
+                    </div>
+                    <div>
+                        <input type="text" value="" name="txtLastName" class="form-group form-control" style="padding-left:10px;" placeholder="Last Name" />
+                    </div>
+                    <div>
+                        <input type="date" value="" name="txtBirthDate" class="form-group form-control" style="padding-left:10px;" placeholder="Birth Date" />
+                    </div>
+                    <div>
+                        <input type="email" value="" name="txtEmail" class="form-group form-control" style="padding-left:10px;" placeholder="E-Mail" />
+                    </div>
+                    <div>
+                        <input type="tel" value="" name="txtUsername" class="form-group form-control" style="padding-left:10px;" placeholder="User Name" />
+                    </div>
+                    <div>
+                        <input type="password" value="" name="txtPass" class="form-group form-control" style="padding-left:10px;" placeholder="Password" />
+                    </div>
+                    <div>
+                        <input type="password" value="" name="txtPass2" class="form-group form-control" style="padding-left:10px;" placeholder="Comfirm Password" />
+                    </div>
+                    <div>
+                        <p class="text-danger" style="margin:1%;">@ViewBag.Error</p>
+                        <input type="submit" value="CREATE" class="btn btn-primary " style="width:100%; margin-top:0px;" />
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+

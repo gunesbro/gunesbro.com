@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PersonelBlog.Models.ADS>
+<div>
+    <div class="followUs">
+        <h2>
+            <span>ADVERTISEMENT</span>
+        </h2>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <a href="@Html.DisplayFor(modelItem => item.AdLink)" target="_blank">
+                <img class="img-responsive center-block" src="@Html.DisplayFor(modelItem => item.AdImage)" alt="@Html.DisplayFor(modelItem => item.AdCompany)" />
+            </a>
+        </div>
+    }
+    
+</div>

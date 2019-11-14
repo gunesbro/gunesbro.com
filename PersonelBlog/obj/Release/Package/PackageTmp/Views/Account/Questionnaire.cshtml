@@ -1,0 +1,73 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<PersonelBlog.Models.UsersQuestionnaireSelection>
+@{
+    ViewBag.Title = "Questionnaire";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">Questionnaire/</h2>
+                <h2>
+                    <a href="~/Account/NewQuestionnaire">
+                        CREATE NEW
+                    </a>
+                </h2>
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Questionnaire.Question)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SiteUser.NickName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Questionnaire.Option1)
+                        </th>
+                        <th>
+                           @Html.DisplayNameFor(model => model.Questionnaire.Option2)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Selection)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Questionnaire.Question)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SiteUser.NickName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Questionnaire.Option1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Questionnaire.Option2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Selection)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Questionnaire", new { page }))
+            </div>
+        </div>
+    </section>
+</div>
+
+
+

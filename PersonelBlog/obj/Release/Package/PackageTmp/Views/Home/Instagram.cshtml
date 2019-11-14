@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PersonelBlog.Models.InstagramEmbed>
+<div>
+    <div class="followUs">
+        <h2>
+            <span>ınstagram</span>
+        </h2>
+    </div>
+    <div>
+        @foreach (var item in Model)
+        {
+            @Html.Raw(item.InstagramEmbed1)
+        }
+
+    </div>
+</div>

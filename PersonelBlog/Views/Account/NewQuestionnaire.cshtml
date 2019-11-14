@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "NewQuestionnaire";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">
+                    @Html.ActionLink("QUESTIONNAIRE", "Questionnaire")
+                </h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>CREATE NEW</h2>
+            </div>
+            @using (Html.BeginForm("NewQuestionnaire", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="table-responsive">
+                    <div>
+                        <input type="text" value="" name="txtQuestion" class="form-group form-control" style="padding-left:10px;" placeholder="Ask Something" />
+                    </div>
+                    <div>
+                        <input type="text" value="" name="txtOption1" class="form-group form-control" style="padding-left:10px;" placeholder="Option 1" />
+                    </div>
+                    <div>
+                        <input type="text" value="" name="txtOption2" class="form-group form-control" style="padding-left:10px;" placeholder="Option 2" />
+                    </div>
+                    <div>
+                        <p class="text-danger" style="margin:1%;">@ViewBag.Error</p>
+                        <input type="submit" value="CREATE" class="btn btn-primary " style="width:100%; margin-top:0px;" />
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+

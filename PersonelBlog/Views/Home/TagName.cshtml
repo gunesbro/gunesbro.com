@@ -1,0 +1,9 @@
+﻿@model IEnumerable<PersonelBlog.Models.ContentWithTags>
+
+<b>'
+    @foreach (var item in Model)
+    {
+        @item.Tags.TagName 
+    }
+    '
+</b>

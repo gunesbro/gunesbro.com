@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PersonelBlog.Models.Pages>
+<head>
+    <style>
+        .category-item{
+            margin:0.5%;
+            border-radius:0px;
+        }
+    </style>
+</head>
+<div>
+    <div class="followUs">
+        <h2>
+            <span>Categorıes</span>
+        </h2>
+    </div>
+    <div class="category-list">
+        @foreach (var item in Model)
+        {
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.PageName).ToString(), "Page", new { id = item.PageId, ignoreThisBit = @item.PageName.Replace(" ", "-") }, new { @class = "btn btn-default category-item" })
+
+        }
+        
+    </div>
+</div>
+

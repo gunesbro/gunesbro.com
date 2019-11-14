@@ -1,0 +1,125 @@
+﻿@model IEnumerable<PersonelBlog.Models.Question>
+@{
+    ViewBag.Title = "ViewQusetion";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+    <link href="~/Content/Content.css" rel="stylesheet" />
+</head>
+<div>
+    @* HEADER *@
+    @Html.Partial("Partials/Header", "Home")
+    @* HEADER *@
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div style="margin-top:5%;">
+                    <div style="margin-top:5%;">
+
+                        <div class="postShare" style=" border-top:1px solid #eee;">
+                            <div>
+                                @foreach (var item in Model)
+                                {
+                                    <div class="text-center">
+                                        <div>
+                                            <h2 class="postTitle">
+                                                <span>
+                                                    @Html.DisplayFor(modelItem => item.QuestionSummary)
+                                                </span>
+                                            </h2>
+                                        </div>
+                                        <div class="postInfo">
+                                            <p>@Html.DisplayFor(modelItem => item.SiteUser.NickName) - @Html.DisplayFor(modelItem => item.QuestionPostTime)</p>
+                                        </div>
+                                    </div>
+                                    @*<div>
+                                            <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.ContentImage)" />
+                                        </div>*@
+                                    <div class="text-left" style="margin-top:6%;">
+                                        <p class="postText">
+                                            @Html.Raw("<div class=postText>" + item.QuestionContext.ToString() + "</div>")
+                                            @*@Html.DisplayFor(modelItem => item.ContentText)*@
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                            <div>
+                                <h6 class="text-left" style="float:left">
+                                    <span> <b> SHARE THIS : </b> </span>
+                                </h6>
+                                <div>
+                                    <div class="btn btn-default " style="margin-top:5px; margin-left:5px;">
+                                        @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Twitter })
+                                    </div>
+                                    <div class="btn btn-default" style="margin-top:5px;">
+                                        @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Reddit })
+                                    </div>
+                                    <div class="btn btn-default" style="margin-top:5px;">
+                                        @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Facebook })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin-top:4%;">
+                                <div style="background-color:black; color:white; padding-left:2%; font-size:16px; padding-top:0.5%; padding-bottom:0.5%;">
+                                    <span>
+                                        LEAVE A COMMENT
+                                    </span>
+                                </div>
+                                <div id="answers">
+                                    @{Html.RenderAction("Answers", "Home", new { QuestionId = ViewBag.QuestionId });}
+                                </div>
+                                <div style="margin-top:5%; padding:5%; border:1px solid #eee;">
+                                    @{Html.RenderAction("LeaveQuestionComment", "Home", new { QuestionId = ViewBag.QuestionId });}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+
+                @* ABOUT ME *@
+                @Html.Action("AboutMe", "Home")
+                @* ABOUT ME *@
+
+
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+                @* INSTAGRAM *@
+                @{Html.RenderAction("Instagram", "Home");}
+                @* INSTAGRAM *@
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function succes(result)
+    {
+        $.get('/Home/SingleAnswer?id=' + result.id, function (data) {
+            $('#answers').append(data);
+
+        })
+    }
+</script>

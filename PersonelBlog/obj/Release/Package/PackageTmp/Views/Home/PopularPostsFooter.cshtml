@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PersonelBlog.Models.Content>
+<div>
+    @foreach (var item in Model.Take(3))
+    {
+        <div class="row">
+            <div class="col-sm-5">
+                <img class="img-responsive" src="https://2.bp.blogspot.com/-cyEw8_zGVuQ/WK7ncOuZXQI/AAAAAAAAAPA/0Ayp_7QxCa49coCs3GqEnmELQPg9gN3KQCLcB/s1600/c16.jpg" />
+            </div>
+            <div class="col-sm-7">
+               @if (item.ContentHeader.ToString().Count() > 120)
+               {
+                <p class="text-left" style="font-weight:bold;">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.ContentHeader).ToString().Substring(0, 100), "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ", "-").ToString() }, new { @class = "popHeader" })
+                    [...]
+                </p>
+               }
+               else
+               {
+                <p class="text-left" style="font-weight:bold;">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.ContentHeader).ToString(), "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ", "-").ToString() }, new { @class = "popHeader" })
+
+                </p>
+               }
+            </div>
+        </div>
+    }
+    
+    
+</div>

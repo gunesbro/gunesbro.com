@@ -1,0 +1,396 @@
+﻿body {
+    background-color: white;
+}
+
+
+/*******************************ADDING CUSTOM FONT***********************************/
+@font-face {
+    font-family: "Super Webcomic Bros.";
+    src: url('../fonts/Super Webcomic Bros..eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Super Webcomic Bros..ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Super Webcomic Bros..woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Super Webcomic Bros..woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Super Webcomic Bros..svg') format('svg'); /* Legacy iOS */
+}
+
+
+
+/************************************POPULAR POSTS***********************************/
+.popPosts {
+    border: 1px solid #ececec;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-size: cover;
+}
+
+.popMargin {
+    margin-top: 1px;
+}
+
+divHover {
+}
+
+.divOpacity {
+    opacity: 0.2;
+    -webkit-transition: opacity 0.5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+
+    .divOpacity:hover, popStyle:hover {
+        opacity: 1;
+    }
+
+.popStyle {
+    z-index: 999; /*If you delete z-index: Text and Category will be behind the Image*/
+    width: 100%;
+    color: white;
+}
+/************************************POPULAR POSTS(END)******************************/
+
+
+/********************************BANNER SECTION**************************************/
+
+/*COLUMN PADDİNG SPACE*/
+.col-space {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.bannerStyle {
+    background-color: rgba(0, 0, 0, 0.30);
+    width: 100%;
+    color: white;
+    z-index: 999; /*If you delete z-index: Text and Category will be behind the Image*/
+}
+
+.categoryStyle {
+    background-color: #03c9a9;
+    font-size: 9px;
+    color: white;
+    font-weight: bold;
+    border-radius: 0px;
+}
+
+/*BANNER ANİMATİON*/
+.anim {
+    position: relative;
+    overflow: hidden;
+}
+
+    .anim img {
+        max-width: 100%;
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .anim:hover img {
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+/********************************BANNER SECTION(END)*********************************/
+
+
+/*****************************ABOUT ME SECTION***************************************/
+
+/*ABOUT ME HEADER*/
+.aboutMe h2:before {
+    position: absolute;
+    content: '';
+    width: 90%;
+    height: 2px;
+    background-color: #d3d3d3;
+    top: 33px;
+    z-index: 0;
+}
+
+.aboutMe h2 span {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: white;
+    padding: 0 10px 0 0;
+    z-index: 1;
+    color: #000;
+}
+/*ABOUT ME HEADER*/
+
+/*ABOUT ME TEXT*/
+.aboutMe-Text {
+    margin-top: 5%;
+    padding: 2px;
+    font-size: 13px;
+    color: #666666;
+    font-family: Arial;
+}
+/*****************************ABOUT ME SECTION(END)**********************************/
+
+
+
+/*************************************HEADER SECTION*********************************/
+.HeaderStyle {
+    font-size: 5em;
+    font-family: "Super Webcomic Bros.";
+}
+
+/*******************************FOLLOW US SECTION************************************/
+.followUs h2 {
+    border-bottom: 2px solid #d3d3d3;
+    margin-top: 5%;
+}
+
+    .followUs h2 span {
+        position: relative;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 0 10px 0 0;
+        z-index: 1;
+        color: #000;
+    }
+
+.followUs-Text {
+    margin-top: 5%;
+    padding: 2px;
+    font-size: 13px;
+    color: #666666;
+    font-family: Arial;
+}
+
+
+
+.socialSection {
+    margin-top: 5%;
+    margin-bottom: 6%;
+}
+
+.social-border {
+    border: 1px solid #ececec;
+}
+
+.social-img {
+    border-right: 1px solid #ececec;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.social-text {
+    font-size: 11px;
+    padding-top: 9px;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+/*FACEBOOK ANIMATION*/
+.facebookAnim {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: none;
+    color: black;
+    -webkit-transition: background-color 1s, color 0.7s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background-color 1s, color 0.7s;
+    transition: background-color 1s,color 1s;
+}
+
+    .facebookAnim:hover {
+        margin-left: 0px;
+        margin-right: 0px;
+        background-color: #3b5998;
+        color: white;
+    }
+/*FACEBOOK ANIMATION*/
+
+/*TWITTER ANIMATION*/
+.twitterAnim {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: none;
+    color: black;
+    -webkit-transition: background-color 1s, color 0.7s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background-color 1s, color 0.7s;
+    transition: background-color 1s,color 1s;
+}
+
+    .twitterAnim:hover {
+        margin-left: 0px;
+        margin-right: 0px;
+        background-color: #1da1f2;
+        color: white;
+    }
+/*TWITTER ANIMATION*/
+
+/*INSTAGRAM ANIMATION*/
+.instagramAnim {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: none;
+    color: black;
+    -webkit-transition: background-color 1s, color 0.7s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background-color 1s, color 0.7s;
+    transition: background-color 1s,color 1s;
+}
+
+    .instagramAnim:hover {
+        margin-left: 0px;
+        margin-right: 0px;
+        background-color: #e1306c;
+        color: white;
+    }
+/*INSTAGRAM ANIMATION*/
+
+
+/*******************************FOLLOW US SECTION(END)*******************************/
+
+/**********************************CATEGORY SECTION*********************************/
+.category-list a {
+    border-radius: 0px;
+    letter-spacing: 0.4px;
+    margin-bottom: 1%;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: black;
+    -webkit-transition: color 0.2s;
+    -moz-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+    .category-list a:hover {
+        text-decoration: none;
+        color: #03c9a9;
+        background-color: white;
+    }
+/**********************************CATEGORY SECTION(END)****************************/
+
+/*************************************TAKE A LOOK***********************************/
+.take-a-Look {
+    position: absolute;
+    display: inline;
+    z-index: 999;
+    text-align: left;
+    float: left;
+    font-family: "Super Webcomic Bros.";
+    font-size: 16px;
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+    padding: 0px;
+    margin-left: -72px;
+    margin-top: 3em;
+}
+/*************************************TAKE A LOOK(END)******************************/
+
+.contınue-reading {
+    border-radius: 0px;
+    background-color: #03c9a9;
+    color: white;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    padding: 13px 32px 12px;
+    text-transform: uppercase;
+    transition: background-color 0.7s, color 0.7s;
+    -webkit-transition: background-color 0.7s, color 0.7s;
+    -moz-transition: background-color 0.7s, color 0.7s;
+    -o-transition: background-color 0.7s, color 0.7s;
+}
+
+    .contınue-reading:hover {
+        background-color: white;
+        color: #03c9a9;
+    }
+
+.postText {
+    color: #353535;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 23px;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.postTitle span {
+    font-family: 'Playfair Display';
+}
+
+.postInfo p {
+    font-family: lato;
+    word-spacing: 1px;
+    color: #b4b4b4;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0 10px;
+}
+
+.postCategory a {
+    color: #03c9a9;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-family: lato;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-bottom: 1px solid #03c9a9;
+    transition: padding-right 0.5s,padding-left 0.5s;
+    -webkit-transition: padding-right 0.5s,padding-left 0.5s;
+    -moz-transition: padding-right 0.5s,padding-left 0.5s;
+    -o-transition: padding-right 0.5s,padding-left 0.5s;
+}
+
+    .postCategory a:hover {
+        text-decoration: none;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+.postShare {
+    display: inline-block;
+    width: 100%;
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+    margin-top: 35px;
+    padding-bottom: 15px;
+}
+
+.comment p{
+    color: #353535;
+    font-size: 12px;
+    letter-spacing: 0;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    text-transform:uppercase;
+    float:left;
+}
+
+.comment h6{
+    text-align:right;
+    font-family:sans-serif;
+    font-size:14px;
+}
+
+.comment h6 a i{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.comment h6 a:hover{
+    text-decoration:none;
+    color:#03c9a9;
+}

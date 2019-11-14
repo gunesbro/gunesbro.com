@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PersonelBlog.Models.Question>
+
+
+<div class="table-responsive" style="border:1px solid white;">
+    <table class="table table-responsive table-hover">
+        <tr>
+            <th>
+                Inquirer
+            </th>
+
+            <th>
+                Summary
+            </th>
+
+            <th>
+                Post Date
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td><p style="margin-top:8px;">@item.SiteUser.NickName</p></td>
+
+                <td>
+                    <p style="margin-top:8px;">
+                        @if (item.QuestionSummary.Count() > 21)
+                        {
+                            @item.QuestionSummary.ToString().Substring(0, 21)
+                        }
+                        else
+                        {
+                            @item.QuestionSummary.ToString()
+                        }
+
+                    </p>
+                </td>
+
+                <td><p style="margin-top:8px;">@item.QuestionPostTime.ToString().AsDateTime().ToShortDateString()</p></td>
+                <td style="vertical-align:central">
+                    @Html.ActionLink("READ QUESTION", "ViewQusetion", new { id = item.QuestionId, ignoreThisBit = item.QuestionSummary.Replace(" ", "-").ToString() }, new { @class = "btn btn-default contınue-reading", @style = "margin:0px;" })
+                </td>
+                <td>
+                    @Html.ActionLink("DELETE", "DeleteQuestion",
+                               new { gelenId = item.QuestionId },
+                               new { onclick = "return confirm('Are you sure you wish to delete this question?');", @class = "btn btn-danger", @style = "height:40px; border-radius:0px; font-size:10px; font-weight:bold; padding-top:12px;" }
+                               )
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

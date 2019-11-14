@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PersonelBlog.Models.FollowUs>
+<div>
+    <div class="followUs">
+        <h2>
+            <span>Follow Us</span>
+        </h2>
+    </div>
+@foreach (var item in Model.Take(1))
+{
+    <div class="socialSection">
+        <div class="center-block social-border">
+            <a href="@Html.DisplayFor(modelItem => item.FacebookLink)" target="_blank">
+                <div class="row facebookAnim">
+                    <div class="col-sm-3 text-center center-block social-img">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    <div class="col-sm-9 text-center social-text">
+                        FACEBOOK
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="center-block social-border">
+            <a href="@Html.DisplayFor(modelItem => item.TwitterLink)" target="_blank">
+                <div class="row twitterAnim">
+                    <div class="col-sm-3 text-center center-block social-img">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <div class="col-sm-9 text-center social-text">
+                        TWITTER
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="center-block social-border">
+            <a href="@Html.DisplayFor(modelItem => item.InstagramLink)" target="_blank">
+                <div class="row instagramAnim">
+                    <div class="col-sm-3 text-center center-block social-img">
+                        <i class="fa fa-instagram"></i>
+                    </div>
+                    <div class="col-sm-9 text-center social-text">
+                        INSTAGRAM
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    </div> 
+    }
+</div>

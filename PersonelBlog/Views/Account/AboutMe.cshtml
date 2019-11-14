@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PersonelBlog.Models.AboutMe>
+
+@{
+    ViewBag.Title = "AboutMe";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>ABOUT ME</h2>
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AboutMeImage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AboutMeText)
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td width="30%;">
+                                <img class="img-responsive img-circle"  src="@Html.DisplayFor(modelItem => item.AboutMeImage)" alt="@Html.DisplayFor(modelItem => item.AboutMeText)" />
+                                
+                            </td>
+                            <td style="width:40%; vertical-align:middle;">
+                                @Html.DisplayFor(modelItem => item.AboutMeText)
+                            </td>
+
+                            <td class="text-center" style="vertical-align:middle; width:30%;">
+                                @Html.ActionLink("Edit", "EditAboutMe", new { gelenId = item.Id }, new { @class= "btn btn-default" , @style="width:200px;"})
+                            </td>
+                            
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+    </section>
+</div>

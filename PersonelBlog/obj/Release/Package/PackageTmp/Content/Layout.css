@@ -1,0 +1,59 @@
+﻿body {
+    background-color: white;
+}
+
+/*NAVBAR COLOR  */
+#navbar {
+    background-color: white;
+}
+
+/*FOOTER STYLES*/
+#footer {
+    margin-top:3%;
+    background-color: #111111;  /*General Background Color*/
+}
+
+    /*SPACE - FOOTER'S TOP*/
+    #footer div {
+        margin-top: 1.3%;
+        margin-bottom: 0.6%;
+    }
+
+        #footer div div {
+            color: #747171;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 15px;  /*Space for Between the TAGS*/
+        }
+
+
+/*FOOTER TAGS UNDERLİNE*/
+.tags {
+    margin-right: 1px;
+    margin-left: 1px;
+    border-bottom: 1px solid #1d1d1d; /*TAGS Underline Color*/
+}
+/*FOOTER TAGS UNDERLİNE*/
+
+
+/*FOOTER POPULAR POSTS TEXT STYLE*/
+.col-sm-4 .row .col-sm-7 a {
+    text-decoration: none;
+    font-weight: bold;
+    color: whitesmoke;
+    margin-top: 2px;
+}
+
+    .col-sm-4 .row .col-sm-7 a:hover {
+        color: red;
+    }
+/*FOOTER POPULAR POSTS TEXT STYLE*/
+
+.line{
+    background-color:#1d1d1d;
+    height:2px;
+}
+
+.projectOwner{
+    color:coral;
+}

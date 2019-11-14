@@ -1,0 +1,15 @@
+﻿@model PersonelBlog.Models.Comment
+
+<div style="border:1px solid #eee; border-radius:5px; margin-top:15px;">
+    <div>
+        <span style="padding-left:15px; font-weight:bold;">
+            @Model.from Said;
+        </span>
+        <span style=" float:right; padding-right:15px; padding-top:3px; font-size:14px;">
+            @Model.CommentDate.ToString().AsDateTime().ToShortDateString()
+        </span>
+        <p style="padding-left:15px; padding-right:15px; font-size:16px;">
+            @Model.CommentText
+        </p>
+    </div>
+</div>

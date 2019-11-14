@@ -1,0 +1,69 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<PersonelBlog.Models.Pages>
+
+@{
+    ViewBag.Title = "Pages";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">CATEGORIES</h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>
+                    <a href="~/Account/NewPage">
+                        CREATE NEW
+                    </a>
+                </h2>
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageImage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageTitle)
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="width:14%;">
+                                <img class="img-responsive center-block" style="width:250px;" src="@Html.DisplayFor(modelItem => item.PageImage)" alt="@Html.DisplayFor(modelItem => item.PageName)" />
+                            </td>
+                            <td style="vertical-align:middle;">
+                                @Html.DisplayFor(modelItem => item.PageName)
+                            </td>
+                            <td style="vertical-align:middle; width:30%;">
+                                @Html.DisplayFor(modelItem => item.PageTitle)
+                            </td>
+
+                            <td style="vertical-align:middle; text-align:center;">
+                                @Html.ActionLink("Edit", "EditPage", new { editId = item.PageId }, new { @class = "btn btn-default" })
+                            </td>
+                            <td style="vertical-align:middle; text-align:center;">
+                                @Html.ActionLink("Delete", "DeletePage",
+                               new { delId = item.PageId },
+                               new { onclick = "return confirm('if you delete this category you will also delete the contents of this category.Are you sure you wish to delete this Category?');",@class = "btn btn-danger"})
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Pages", new { page }))
+            </div>
+        </div>
+    </section>
+</div>

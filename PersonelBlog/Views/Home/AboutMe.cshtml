@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PersonelBlog.Models.AboutMe>
+
+@{
+    Layout = null;
+    if (!Request.QueryString["lang"].IsEmpty())
+    {
+        Culture = UICulture = Request.QueryString["lang"];
+    }
+}
+<head>
+    <style>
+        .aboutMe h2:before {
+            top: 25px;
+        }
+    </style>
+</head>
+
+<div>
+    <div class="aboutMe">
+        <h2>
+            <span>@Language.AboutMe</span>
+        </h2>
+    </div>
+    <div style="margin-top:5%;">
+        @foreach (var item in Model.Take(1))
+        {
+
+            <div>
+                <img class="img-responsive img-circle center-block" style="height:200px;" src="@Html.DisplayFor(modelItem => item.AboutMeImage)" />
+            </div>
+            <div>
+                <p class="text-center aboutMe-Text">
+                    @Html.DisplayFor(modelItem => item.AboutMeText)
+                </p>
+            </div>
+
+
+        }
+    </div>
+
+
+
+</div>

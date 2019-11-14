@@ -1,0 +1,94 @@
+﻿body {
+}
+
+.tag {
+    float: left;
+    display: inline-block;
+    font-size: 10px;
+    height: 20px;
+    line-height: 19px;
+    background-color: #f0f0f0;
+    color: #222;
+    padding: 0 8px;
+}
+
+.tagContext, .tagContext:link {
+    margin-left: 8px;
+    margin-right: 8px;
+    float: left;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 10px;
+    height: 20px;
+    line-height: 19px;
+    background-color: #222;
+    color: white;
+    padding: 0 8px;
+}
+
+    .tagContext:hover, .tagContext:visited, .tagContext:active {
+        background-color: red;
+        color: white;
+        text-decoration: none;
+    }
+
+.share-facebook {
+    background-color: #003471;
+    color: white;
+    font-family: Arial;
+    letter-spacing: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.share-twitter {
+    background-color: #1da1f2;
+    color: white;
+    font-family: Arial;
+    letter-spacing: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.share-googlePlus {
+    background-color: #dd4b39;
+    color: white;
+    font-family: Arial;
+    letter-spacing: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.share-pinterest {
+    background-color: #bd081c;
+    color: white;
+    font-family: Arial;
+    letter-spacing: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+    .share-facebook:hover, .share-twitter:hover, .share-googlePlus:hover,
+    .share-pinterest:hover {
+        color: white;
+        background-color: #222;
+    }
+
+.you-might-also-like {
+    margin-top:5%;
+    font-family:Calibri;
+    font-size:18px;
+}
+
+.you-might-also-like div{
+    margin-top:0.6%;
+
+}

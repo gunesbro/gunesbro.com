@@ -1,0 +1,100 @@
+﻿@model IEnumerable<PersonelBlog.Models.FollowUs>
+
+@{
+    ViewBag.Title = "FollowUs";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+<head>
+    <style>
+        table tr td a {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>FOLLOW US</h2>
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table table-bordered table-hover" style="overflow: hidden;">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FacebookLink)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TwitterLink)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InstagramLink)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LinkedInLink)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr id="list">
+                            <td>
+                                <a href="@Html.DisplayFor(modelItem => item.FacebookLink)" target="_blank">
+                                    @Html.DisplayFor(modelItem => item.FacebookLink)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Html.DisplayFor(modelItem => item.TwitterLink)" target="_blank">
+                                    @Html.DisplayFor(modelItem => item.TwitterLink)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Html.DisplayFor(modelItem => item.InstagramLink)" target="_blank">
+                                    @Html.DisplayFor(modelItem => item.InstagramLink)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Html.DisplayFor(modelItem => item.LinkedInLink)" target="_blank">
+                                    @Html.DisplayFor(modelItem => item.LinkedInLink)
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <input type="button" class="btn btn-default" value="Edit" onclick="funcCollapse()" />
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new {  @class = "btn btn-default"})*@
+                            </td>
+                        </tr>
+                        using (Html.BeginForm("EditFollowUs", "Account", new { editFollowUsId = item.Id }))
+                        {
+                            <tr id="editableList" style="visibility:collapse;">
+                                <td>
+                                    <input class="form-control" name="facebook" type="text" value="@item.FacebookLink" />
+                                </td>
+                                <td>
+                                    <input class="form-control" name="twitter" type="text" value="@item.TwitterLink" />
+                                </td>
+                                <td>
+                                    <input class="form-control" name="instagram" type="text" value="@item.InstagramLink" />
+                                </td>
+                                <td>
+                                    <input class="form-control" name="linkedin" type="text" value="@item.LinkedInLink" />
+                                </td>
+                                <td class="text-center">
+                                    <input type="submit" value="SAVE" class="btn btn-default"/>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function funcCollapse() {
+        document.getElementById("list").style.visibility = 'collapse';
+        document.getElementById("editableList").style.visibility = 'visible';
+    }
+</script>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PersonelBlog.Models.Pages>
+<head>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+
+@foreach (var item in Model.Take(3))
+{
+    <li> 
+            @Html.ActionLink(@item.PageName, "Page", new { id = item.PageId, ignoreThisBit = @item.PageName.Replace(" ", "-") }, new { @class = "" })
+    </li>
+}
+<li>
+    <a href="/Home/QuestionAnswer">
+        Q - A
+    </a>
+</li>
+
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        MORE
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        @foreach (var item in Model.Skip(3))
+        {
+            <li>
+                <a href="#">
+                    @Html.ActionLink(@item.PageName, "Page", new { id = item.PageId, ignoreThisBit = @item.PageName.Replace(" ", "-") }, new { @class = "" })
+                </a>
+            </li>
+        }
+    </ul>
+</li>

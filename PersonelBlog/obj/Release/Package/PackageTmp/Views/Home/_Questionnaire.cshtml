@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PersonelBlog.Models.Questionnaire>
+
+@foreach (var item in Model)
+{
+    if (Request.Cookies.AllKeys.Contains("AnketDurum"))
+    {
+        if (Request.Cookies["AnketDurum"].Value != "true")
+        {
+            using (Ajax.BeginForm("_Questionnaire", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "succes" }))
+            {
+                <div class="panel panel-default" style="margin:10px 0px 0px 0px;">
+                    <div class="panel-heading">Questionnaire</div>
+                    <div class="panel-body" id="panelBody">
+                        <div>
+                            <p class="text" style="font-size:11px;">@item.Question</p>
+                        </div>
+                        <div class="btn-group " data-toggle="buttons">
+                            <label class="btn btn-default" style="font-size:12px;">
+                                @Html.RadioButton("Option", $"{@item.Option1}")@item.Option1
+                            </label>
+                            <label class="btn btn-default" style="font-size:12px;">
+                                @Html.RadioButton("Option", $"{@item.Option2}")@item.Option2
+                            </label>
+                        </div>
+                        <div id="thankYou" style="visibility:collapse;padding:0px;">
+                            <p class="text" style="font-size:11px;">Thank you for your Selection.</p>
+                        </div>
+                        <div style="margin-top:5px;">
+                            <input type="submit" onclick="thanks()" class="btn contınue-reading" value="SEND" style="width:100%; border-radius:0px; margin:0px;" />
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+}
+<script>
+    function thanks() {
+        document.getElementById("panelBody").style.visibility = 'collapse';
+        document.getElementById("thankYou").style.visibility = 'visible';
+    }
+</script>
+

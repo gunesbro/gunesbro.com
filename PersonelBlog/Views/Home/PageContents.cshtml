@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PersonelBlog.Models.Content>
+
+@foreach (var item in Model)
+{
+    <div style="margin-top:5%;">
+        <div class="text-center">
+            <div class="postCategory">
+                <a href="#">
+                    @Html.ActionLink(@item.Pages.PageName, "Page", new { id = item.Pages.PageId }, new { @class = "" })
+                </a>
+            </div>
+            <div>
+                <h2 class="postTitle">
+                    <span>
+                        @Html.DisplayFor(modelItem => item.ContentHeader)
+                    </span>
+                </h2>
+            </div>
+            <div class="postInfo">
+                <p>@Html.DisplayFor(modelItem => item.User.UserName) - @Html.DisplayFor(modelItem => item.PostDate)</p>
+            </div>
+        </div>
+        <div>
+            <a href="/Home/Content/@item.ContentHeader.Replace(" ","-").ToString()/@item.ContentId">
+                <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.ContentImage)" />
+            </a>
+        </div>
+        <div class="text-left" style="margin-top:6%;">
+            <p class="postText">
+                @Html.DisplayFor(modelItem => item.ContentText).ToString().Substring(0, 400)
+            </p>
+        </div>
+        <div class="text-center">
+            @*<a class="btn btn-default contınue-reading" style="margin-left:auto; margin-right:auto;">
+                    CONTINUE READING
+                </a>*@
+            @Html.ActionLink("CONTINUE READING", "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ", "-").ToString() }, new { @class = "btn btn-default contınue-reading" })
+        </div>
+
+        <div class="postShare">
+            <div class="comment">
+                <p>
+                    8 comments
+                </p>
+                <h6 class="align-right">
+                    SHARE:
+                    <a>
+                        <i class="fa fa-facebook"></i>
+
+                    </a>
+                    <a>
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a>
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a>
+                        <i class="fa fa-pinterest"></i>
+                    </a>
+
+                </h6>
+            </div>
+        </div>
+    </div>
+}

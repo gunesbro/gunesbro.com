@@ -1,0 +1,92 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<PersonelBlog.Models.User>
+@{
+    ViewBag.Title = "Editor";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">USERS/</h2>
+                <h2>
+                    <a href="~/Account/CreateEditor">
+                        CREATE NEW
+                    </a>
+                </h2>
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserInfo.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserInfo.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role.Role1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserInfo.RegistrationDate)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserInfo.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserInfo.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role.Role1)
+                            </td>
+                            <td style="width:25%;">
+                                @Html.DisplayFor(modelItem => item.UserInfo.RegistrationDate).ToString().AsDateTime().ToShortDateString()
+                            </td>
+                            <td>
+                                @if (item.Role.Role1 == "Editör")
+                                {
+                                    @Html.ActionLink("Make Admin", "MakeAdmin",
+                               new { gelenId = item.UserId },
+                               new { onclick = "return confirm('Are you sure you wish to do this?');", @class = "btn btn-info" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Make Editor", "MakeUser",
+                               new { gelenId = item.UserId },
+                               new { onclick = "return confirm('Are you sure you wish to do this?');", @class = "btn btn-info" })
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteUser",
+                               new { gelenId = item.UserId },
+                               new { onclick = "return confirm('Are you sure you wish to delete this user?');", @class = "btn btn-danger" }
+                               )
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div>
+                @*@Html.PagedListPager((IPagedList)Model, page => Url.Action("User", new { page }))*@
+            </div>
+        </div>
+    </section>
+</div>
+
+
+

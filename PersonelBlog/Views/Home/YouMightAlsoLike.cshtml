@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PersonelBlog.Models.Content>
+
+@foreach (var item in Model)
+{
+    if (Model.Count() < 3)
+    {
+       <div  class="col-sm-12" style="border-bottom:1px solid #eee; padding-bottom:4%;">
+           <div>
+               There is no enough post to see this section...
+           </div>
+       </div>
+    }
+    else
+    {
+        <div class="col-sm-4" style="border-bottom:1px solid #eee; padding-bottom:4%;">
+            <div>
+                <img class="img-responsive" src="@item.ContentImage" />
+            </div>
+
+            <div style="margin-top:2%; font-size:15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                <b style="text-align:center;">
+                    @item.ContentHeader.ToString()
+                </b>
+            </div>
+        </div>
+    }
+
+}
+
+

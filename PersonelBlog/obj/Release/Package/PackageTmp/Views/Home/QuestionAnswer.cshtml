@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PersonelBlog.Models.Question>
+@{
+    ViewBag.Title = "QuestionAnswer";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+
+</head>
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="text-left" style="margin-top:4%; font-size:14px; color:#441b00; border-bottom:1px solid #eee; border-top:1px solid #eee; padding-left:1%;">
+                    <span>
+                        Showing <b>Q-A</b> section.
+                    </span>
+                </div>
+                <div class="table-responsive" style="border:1px solid white;">
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <th>
+                                Inquirer
+                            </th>
+
+                            <th>
+                                Summary
+                            </th>
+
+                            <th>
+                                Post Date
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><p style="margin-top:8px;">@item.SiteUser.NickName</p></td>
+
+                                <td><p style="margin-top:8px;">@item.QuestionSummary</p></td>
+
+                                <td><p style="margin-top:8px;">@item.QuestionPostTime</p></td>
+                                <td style="vertical-align:central">
+                                    @Html.ActionLink("READ QUESTION", "ViewQusetion", new { id = item.QuestionId, ignoreThisBit = item.QuestionSummary.Replace(" ", "-").ToString() }, new { @class = "btn btn-default contınue-reading", @style = "margin:0px;" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+            </div>
+        </div>
+    </div>
+</div>

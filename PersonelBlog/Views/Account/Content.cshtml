@@ -1,0 +1,104 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<PersonelBlog.Models.Content>
+
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">CONTENT/</h2>
+                <h2>
+                    <a href="~/Account/NewContent">
+                        CREATE NEW
+                    </a>
+                </h2>
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContentImage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pages.PageName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContentHeader)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContentText)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.HitCounter)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PostDate)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="img-responsive" width="100" src="@Html.DisplayFor(modelItem => item.ContentImage)" alt="@Html.DisplayFor(modelItem => item.ContentHeader)" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pages.PageName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContentHeader)
+                            </td>
+                            <td style="width:25%;">
+                                @if (item.ContentText.ToString().Count() > 120)
+                                {
+                                    
+                                        @*@MvcHtmlString.Create(item.ContentText.ToString().Substring(0,120))*@
+                                        @*@Html.Raw(item.ContentText.ToString().Substring(0, 120))*@
+                                    @Html.DisplayFor(modelItem => item.ContentText).ToString().Substring(0, 120)
+                                }
+                                else
+                                {
+                                    @*@Html.Raw(item.ContentText.ToString())*@
+                                    @Html.DisplayFor(modelItem => item.ContentText)
+                                }
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HitCounter)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PostDate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditContent", new { editContentId = item.ContentId }, new { @class = "btn btn-default" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteContent",
+                               new { gelenId = item.ContentId },
+                               new { onclick = "return confirm('Are you sure you wish to delete this post?');", @class = "btn btn-danger" }
+                               )
+                                
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Content", new { page }))
+            </div>
+        </div>
+    </section>
+</div>

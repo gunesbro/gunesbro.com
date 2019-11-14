@@ -1,0 +1,10 @@
+﻿@model IEnumerable<PersonelBlog.Models.Tags>
+
+<select name="cmbTag" id="cmbTag" class="form-control">
+    <optgroup label="Select Tag">
+        @foreach (var item in Model)
+        {            
+                <option>@item.TagName</option>
+        }
+    </optgroup>
+</select>

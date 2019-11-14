@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PersonelBlog.Models.Pages>
+@{
+    ViewBag.Title = "EditContent";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+<head>
+    <meta charset="UTF-8">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor_basic_source.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor_source.js"></script>
+</head>
+<div>
+    <section class="content" style="margin-top:0px;">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">
+                    @Html.ActionLink("CONTENT", "Content")
+                </h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>CREATE</h2>
+            </div>
+            @*Şu aşağıdaki enctype olmadan resim upload işlemi çalışmıyor.Kanserlik Hata UNUTMA!!!*@
+            @using (Html.BeginForm("EditContent", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="table-responsive">
+                    <div>
+                        <input type="text" value="@ViewBag.Header" name="txtHeader" id="txtHeader" class="form-group form-control" style="padding-left:10px;" placeholder="Header Here!" />
+
+                    </div>
+                    <div style="margin-top:10px; margin-bottom:10px;">
+                        <select name="cmbCategory" id="cmbCategory" class="form-control">
+                            <optgroup label="Select Category">
+                                <option selected>@ViewBag.Selected</option>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.PageName != @ViewBag.Selected)
+                                    {
+                                        <option>@Html.DisplayFor(modelItem => item.PageName)</option>
+                                    }
+                                }
+                            </optgroup>
+                        </select>
+                    </div>
+                    @*<input class="ckeditor" id="sampleEditor" name="txtContext"/>*@
+                    @Html.TextArea("editor", $"{@ViewBag.Context}", new { @class = "ckeditor", @id = "sampleEditor", Name = "txtContext" })
+                    <div>
+                        <input type="file" value="Browse" name="foto" id="foto" class="form-control" accept=".jpg,.png,.JPEG,.jpeg,.JPG,.PNG" />
+                    </div>
+                    <div>
+                        <input name="editId" value="@ViewBag.EditId" style="visibility:collapse" />
+                        <input type="submit" value="SAVE" class="btn btn-primary " style="width:100%; margin-top:3px;" />
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </section>
+</div>
+

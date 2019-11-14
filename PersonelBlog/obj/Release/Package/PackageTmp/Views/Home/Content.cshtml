@@ -1,0 +1,121 @@
+﻿@using Microsoft.Web.Helpers
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+    <link href="~/Content/Content.css" rel="stylesheet" />
+
+
+</head>
+
+<div>
+    @* HEADER *@
+    @Html.Partial("Partials/Header", "Home")
+    @* HEADER *@
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-8">
+
+                @* POSTS *@
+                <div style="margin-top:5%;">
+                    <div style="margin-top:5%;">
+
+                        @Html.Action("ContentInfo", "Home")
+
+                        @Html.Action("ContentTags", "Home")
+
+                        <div class="postShare" style=" border-top:1px solid #eee;">
+                            <div>
+                                <h6 class="text-left" style="float:left">
+                                    <span> <b> SHARE THIS : </b> </span>
+                                </h6>
+                                <div>
+                                    <div class="btn btn-default " style="margin-top:5px; margin-left:5px;">
+                                        @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Twitter })
+                                    </div>
+                                    <div class="btn btn-default" style="margin-top:5px;">
+                                        @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Reddit })
+                                    </div>
+                                    <div class="btn btn-default" style="margin-top:5px;">
+                                        @LinkShare.GetHtml("Post", linkSites: new[] { LinkShareSite.Facebook })
+                                    </div>
+                                </div>          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="you-might-also-like">
+                    <span>
+                        YOU MIGHT ALSO LIKE
+                    </span>
+
+                    <div class="row">
+                        @{Html.RenderAction("YouMightAlsoLike", "Home",new { categoryId = ViewBag.CategoryId, postId = ViewBag.PostId });}
+                    </div>
+
+                    <div class="row" style="margin-top:4%;">
+                        <div style="background-color:black; color:white; padding-left:2%; font-size:16px; padding-top:0.5%; padding-bottom:0.5%;">
+                            <span>
+                                LEAVE A COMMENT
+                            </span>
+                        </div>
+                        <div id="comments">
+                            @{Html.RenderAction("Comments", "Home", new { PostId = ViewBag.PostId });}
+
+                        </div>
+                        <div style="margin-top:5%; padding:5%; border:1px solid #eee;">
+                            @{Html.RenderAction("LeaveComment", "Home", new { PostId = ViewBag.PostId });}
+                        </div>
+                    </div>
+
+                </div>
+                @* POSTS *@
+            </div>
+            <div class="col-sm-4">
+
+                @* ABOUT ME *@
+                @Html.Action("AboutMe", "Home")
+                @* ABOUT ME *@
+
+
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+                @* INSTAGRAM *@
+                @{Html.RenderAction("Instagram", "Home");}
+                @* INSTAGRAM *@
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function succes(result) {
+        $.get('/Home/SingleComment?id=' + result.id, function (data) {
+            $('#comments').append(data);
+
+        })
+    }
+</script>

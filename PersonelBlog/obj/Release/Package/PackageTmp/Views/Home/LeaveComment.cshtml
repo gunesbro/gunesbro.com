@@ -1,0 +1,47 @@
+﻿<div class="fa fa-comment">
+    <span>
+        Your Turn
+    </span>
+</div>
+@if (Request.Cookies.AllKeys.Contains("SiteUser"))
+{
+    if (Request.Cookies["SiteUser"].Value != "")
+    {
+
+        using (Ajax.BeginForm("LeaveComment", "Home",FormMethod.Post,new AjaxOptions { OnSuccess = "succes"}))
+        {
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" placeholder="Your Name*" value="@Request.Cookies["SiteUser"].Value.ToString()" style="width:100%;" disabled="disabled" />
+                    </div>
+                    @*<div class="col-sm-6">
+                            <input class="form-control" type="text" placeholder="Your Email*" style="width:100%;" />
+                        </div>*@
+                </div>
+                <div style="visibility:collapse;">
+                    <input name="pId" value="@ViewBag.PostId" />
+                </div>
+                <div>
+                    <textarea name="Comment" class="form-control" rows="5" placeholder="Your Comment*"></textarea>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-info" style="width:100%;" value="Publish" />
+                </div>
+
+            </div>
+        }
+    }
+}
+else
+{
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center; font-size:16px;">
+                You Have to <b>LOGIN</b> for Leave Comment
+            </div>
+
+        </div>
+    </div>
+}
+

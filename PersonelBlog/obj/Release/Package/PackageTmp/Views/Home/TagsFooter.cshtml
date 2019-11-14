@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PersonelBlog.Models.Tags>
+
+<div>
+    @if (Model.Count()>= 6)
+    {
+        foreach (var item in Model.Take(6))
+        {
+            <div class="row tags">
+                <div class="col-sm-8 " style="color:whitesmoke;">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.TagName).ToString(), "Content", new { id = item.TagId, ignoreThisBit = item.TagName.Replace(" ", "-").ToString() }, new { @class = "popHeader" })
+
+                </div>
+                <div class="col-sm-4">
+                    (3)
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>
+            Bu alanı kullanabilmek için en az 6 adet tag girişi yapın.
+        </p>
+    }
+    
+</div>

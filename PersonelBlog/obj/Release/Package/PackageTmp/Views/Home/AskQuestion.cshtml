@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "AskQuestion";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor_basic_source.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor_source.js"></script>
+</head>
+<div>
+    <div class="container-fluid">
+
+        <div class="container">
+            @* BANNER *@
+            @Html.Action("Banner", "Home")
+            @* BANNER *@
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="text-left" style="margin-top:4%; font-size:14px; color:#441b00; border-bottom:1px solid #eee; border-top:1px solid #eee; padding-left:1%;">
+                    <span>
+                        Ask <b>Question</b> section.
+                    </span>
+                </div>
+                @using (Html.BeginForm("AskQuestion", "Home"))
+                {
+                    <div style="margin-top:15px;">
+                        <div class="table-responsive">
+                            <div>
+                                <input type="text" name="txtHeader" id="txtHeader" class="form-group form-control" style="padding-left:10px;" placeholder="Summary" />
+
+                            </div>
+                            @Html.TextArea("editor", new { @class = "ckeditor", @id = "sampleEditor", Name = "txtContext" })
+                            <div>
+                                <input type="submit" value="SEND" class="btn btn-primary " style="width:100%; margin-top:3px;" />
+
+                            </div>
+                        </div>
+                    </div>
+                }
+               
+
+            </div>
+            <div class="col-sm-4">
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+            </div>
+        </div>
+    </div>
+</div>
+

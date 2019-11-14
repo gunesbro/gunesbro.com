@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "EditPage";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">
+                    @Html.ActionLink("CATEGORIES", "Pages")
+                </h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>EDIT CATEGORY</h2>
+            </div>
+            @using (Html.BeginForm("EditPage", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="table-responsive">
+                    <h2>Type Something About Me</h2>
+                    <div>
+                        <input type="text" value="@ViewBag.CatName" name="txtCatName" id="txtCatName" class="form-group form-control" style="padding-left:10px;" placeholder="Category Name Here!" />
+                    </div>
+                    <div>
+                        <input type="text" value="@ViewBag.CatInfo" name="txtCatInfo" id="txtCatName" class="form-group form-control" style="padding-left:10px;" placeholder="Category Info Here!(Keep It Short)" />
+                    </div>
+                    <div>
+                        <input type="file" value="@ViewBag.ImageSource" name="foto" id="foto" class="form-control" accept=".jpg,.png,.JPEG,.jpeg,.JPG,.PNG" />
+                    </div>
+                    <div>
+                        <input style="visibility:collapse;" name="txtId" value="@ViewBag.EditId" />
+                    </div>
+                    <div>
+                        <p class="text-danger" style="margin:1%;">@ViewBag.Error</p>
+                        <input type="submit" value="EDIT" class="btn btn-primary " style="width:100%; margin-top:0px;" />
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+
+    <style>
+        .pagination-container .pagination .active a{
+            background-color:#03c9a9;
+            border-color :#03c9a9;
+            color:white;
+        }
+        .pagination-container .pagination  a{
+            color:red;
+            border-color :#03c9a9;
+        }
+        .pagination-container .pagination  a:hover{
+            color:black;
+            border-color :#03c9a9;
+        }
+    </style>
+
+
+</head>
+
+<div class="">
+   
+    @* HEADER *@
+    @Html.Partial("Partials/Header", "Home")
+    @* HEADER *@
+
+    <div class="container-fluid">
+
+        <div class="container">
+            @* BANNER *@
+                @Html.Action("Banner", "Home")
+            @* BANNER *@
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                @* POSTS *@
+                <div style="margin-top:10%;">
+                    
+                    @Html.Action("RecentPosts", "Home")
+
+                </div>
+                @* POSTS *@
+            </div>
+            <div class="col-sm-4">
+
+                @* ABOUT ME *@
+                @Html.Action("AboutMe", "Home")
+                @* ABOUT ME *@
+
+
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @{ Html.RenderAction("_Questionnaire", "Home");}
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+                @* INSTAGRAM *@
+                @{Html.RenderAction("Instagram", "Home");}
+                @* INSTAGRAM *@
+
+            </div>
+        </div>
+    </div>
+</div>

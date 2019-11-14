@@ -1,0 +1,149 @@
+﻿@model IEnumerable<PersonelBlog.Models.User>
+
+<ul class="list">
+    <li class="header">BASİC OPERATIONS</li>
+    <li class="active">
+        @foreach (var item in Model)
+        {
+            if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+            {
+                <a href="~/Account/Index">
+                    <i class="material-icons">home</i>
+                    <span>Home Page</span>
+                </a>
+            }
+
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+        {
+            if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+            {
+                <a href="~/Home" target="_blank">
+                    <i class="material-icons col-red">donut_large</i>
+                    <span>View Site</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+        {
+            if (item.Role.Role1 == "Admin")
+            {
+                <a href="~/Account/AboutMe">
+                    <i class="material-icons">chrome_reader_mode</i>
+                    <span>About Me</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+        {
+            if (item.Role.Role1 == "Admin")
+            {
+                <a href="~/Account/Editor">
+                    <i class="material-icons">chrome_reader_mode</i>
+                    <span>Manage Editors</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/Questionnaire">
+                    <i class="material-icons">assignment</i>
+                    <span>Questionnaire</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/Pages">
+                    <i class="material-icons">perm_media</i>
+                    <span>Categories</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/Content">
+                    <i class="material-icons">assignment</i>
+                    <span>Content</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/Tags">
+                    <i class="material-icons">layers</i>
+                    <span>Tags</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/FollowUs">
+                    <i class="material-icons">important_devices</i>
+                    <span>Follow Us</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/Instagram">
+                    <i class="material-icons">important_devices</i>
+                    <span>Instagram</span>
+                </a>
+            }
+        }
+
+    </li>
+    <li class="active">
+        @foreach (var item in Model)
+            {
+                if (item.Role.Role1 == "Editör" || item.Role.Role1 == "Admin")
+                {
+                <a href="~/Account/Ads">
+                    <i class="material-icons">widgets</i>
+                    <span>ADS</span>
+                </a>
+            }
+        }
+
+    </li>
+</ul>

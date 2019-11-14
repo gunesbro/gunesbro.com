@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PersonelBlog.Models.Content>
+
+@foreach (var item in Model)
+{
+    <div class="text-center">
+        <div class="postCategory">
+            <a href="#">
+                @Html.DisplayFor(modelItem => item.Pages.PageName)
+            </a>
+        </div>
+        <div>
+            <h2 class="postTitle">
+                <span>
+                    @Html.DisplayFor(modelItem => item.ContentHeader)
+                </span>
+            </h2>
+        </div>
+        <div class="postInfo">
+            <p>@Html.DisplayFor(modelItem => item.User.UserName) - @Html.DisplayFor(modelItem => item.PostDate)</p>
+        </div>
+    </div>
+    <div>
+        <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.ContentImage)" />
+    </div>
+    <div class="text-left" style="margin-top:6%;">
+        <p class="postText">
+            @Html.Raw("<div class=postText>" + item.ContentText.ToString() + "</div>")
+            @*@Html.DisplayFor(modelItem => item.ContentText)*@
+        </p>
+    </div>
+}

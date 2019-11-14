@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PersonelBlog.Models.ADS>
+
+@{
+    ViewBag.Title = "Ads";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+<head>
+
+</head>
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">ADS</h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>
+                    @Html.ActionLink("CREATE", "NewAdd")
+                </h2>
+
+            </div>
+            <div class="table-responsive" style="border:1px solid white;">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdImage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdCompany)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdLink)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="img-responsive" width="50" src="@Html.DisplayFor(modelItem => item.AdImage)" alt="@Html.DisplayFor(modelItem => item.AdLink)" />
+                            </td>
+                            <td style="vertical-align:middle;">
+                                @Html.DisplayFor(modelItem => item.AdCompany)
+                            </td>
+
+                            <td style="vertical-align:middle;">
+                                @Html.DisplayFor(modelItem => item.AdLink)
+                            </td>
+                            <td style="vertical-align:middle;">
+                                @Html.ActionLink("Delete", "DeleteAd",
+                                new { AddId = item.AdsId },
+                               new { onclick = "return confirm('Are you sure you wish to delete this post?');", @class = "btn btn-danger" }
+                               )
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+    </section>
+</div>

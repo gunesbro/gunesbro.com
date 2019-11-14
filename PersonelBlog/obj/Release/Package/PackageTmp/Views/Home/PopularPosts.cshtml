@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PersonelBlog.Models.Content>
+
+<head>
+    <style>
+        .popHeader:hover{
+            color:turquoise;
+            text-decoration:none;   
+        }
+    </style>
+</head>
+
+<div class="hidden-xs">
+    <div class="followUs">
+        <h2>
+            <span>POPULAR POSTS</span>
+        </h2>
+    </div>
+    <div>
+        @foreach (var item in Model.Take(1))
+        {
+            <a href="#">
+                <div class="w3-display-container">
+                    <div class="w3-display-bottommiddle w3-padding text-center popStyle hidden-xs">
+
+                        @if (item.ContentHeader.ToString().Count() > 120)
+                        {
+                            <p class="text-left" style="font-weight:bold;">
+                                @Html.ActionLink(@Html.DisplayFor(modelItem => item.ContentHeader).ToString().Substring(0, 100), "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ","-").ToString() }, new { @class = "popHeader" })
+                                [...]
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="text-left" style="font-weight:bold;">
+                                @Html.ActionLink(@Html.DisplayFor(modelItem => item.ContentHeader).ToString(), "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ","-").ToString() }, new { @class = "popHeader" })
+
+                            </p>
+                        }
+
+
+                        <p class="text-left" style="font-size:11px; margin:0px;">
+                            @Html.DisplayFor(modelItem => item.PostDate)
+                        </p>
+                    </div>
+                    <div class="img-responsive popPosts" style="height:190px; background-image:url(@Html.DisplayFor(modelItem => item.ContentImage)); ">
+                        @*<img height="200" />*@
+                    </div>
+                </div>
+            </a>
+        }
+
+    </div>
+    @foreach (var item in Model.Skip(1).Take(2))
+    {
+        <div>
+            <a href="#">
+                <div class="w3-display-container">
+                    <div class="img-responsive popMargin popPosts divOpacity" style="height:115px; background-image:url(@Html.DisplayFor(modelItem => item.ContentImage));">
+                        @*<img height="115" />*@
+                        <div class="w3-display-bottommiddle w3-padding text-center popStyle" style="background-color:transparent; ">
+
+                            @if (item.ContentHeader.ToString().Count() > 120)
+                            {
+                                <p class="text-left" style="font-weight:bold;">
+                                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.ContentHeader).ToString().Substring(0, 100), "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ", "-").ToString() }, new { @class = "popHeader" })         
+                                    [...]
+                                </p>
+
+                            }
+                            else
+                            {
+                                <p class="text-left" style="font-weight:bold;">
+                                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.ContentHeader).ToString(), "Content", new { id = item.ContentId, ignoreThisBit = item.ContentHeader.Replace(" ", "-").ToString() }, new { @class = "popHeader" })
+                                   
+
+                                </p>
+                            }
+
+                            <p class="text-left" style="font-size:11px; margin:0px;">
+                                @Html.DisplayFor(modelItem => item.PostDate)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

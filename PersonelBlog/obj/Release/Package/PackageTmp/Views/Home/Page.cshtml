@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PersonelBlog.Models.Pages>
+
+@{
+    ViewBag.Title = "Page";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    <link href="~/Content/w3[1].css" rel="stylesheet" />
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+
+</head>
+
+<div>
+    @* HEADER *@
+    @Html.Partial("Partials/Header", "Home")
+    @* HEADER *@
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-8">
+
+                <div class="text-left" style="margin-top:4%; font-size:14px; color:#441b00; border-bottom:1px solid #eee; border-top:1px solid #eee; padding-left:1%;">
+                    <span>
+                        Showing posts with label
+                        <b>
+                            @foreach (var item in Model)
+                            {
+                                @item.PageName
+                            }
+                        </b>.
+                    </span>
+                </div>
+
+                @* POSTS *@
+                <div style="margin-top:5%;">
+                    @Html.Action("PageContents", "Home")
+                </div>
+                @* POSTS *@
+            </div>
+            <div class="col-sm-4">
+
+                @* ABOUT ME *@
+                @Html.Action("AboutMe", "Home")
+                @* ABOUT ME *@
+
+
+                @* FOLLOW US *@
+                @Html.Action("FollowUs", "Home")
+                @* FOLLOW US *@
+
+
+                @* POPULAR POSTS *@
+                @Html.Action("PopularPosts", "Home")
+                @* POPULAR POSTS *@
+
+                @* CATEGOTIES *@
+                @Html.Action("Categories", "Home")
+                @* CATEGOTIES *@
+
+                @* ADVERTISEMENT *@
+                @Html.Action("Advertısement", "Home")
+                @* ADVERTISEMENT *@
+
+                @* INSTAGRAM *@
+                @{Html.RenderAction("Instagram", "Home");}
+                @* INSTAGRAM *@
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

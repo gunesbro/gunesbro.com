@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PersonelBlog.Models.AboutMe>
+@{
+    ViewBag.Title = "EditAboutMe";
+    Layout = "~/Views/Account/ControlPanelLayout.cshtml";
+}
+<div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2 style="float:left;">
+                    @Html.ActionLink("ABOUT ME", "AboutMe")
+                </h2>
+                <h2 style="float:left;">  /  </h2>
+                <h2>EDIT</h2>
+            </div>
+            @using (Html.BeginForm("SaveAboutMeChanges", "Account"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="table-responsive">
+                    <h2>Type Something About Me</h2>
+                    <div>
+                        <input type="text" value="@ViewBag.Context" name="txtAboutMe" id="txtHeader" class="form-group form-control" style="padding-left:10px;" placeholder="What About Me!" />
+                    </div>
+                    <input style="visibility:collapse; height:0px; margin:0px; padding:0px;" name="txtAboutId" type="text" value="@ViewBag.AboutId"/>
+                    <div>
+                        <p class="">@ViewBag.Error</p>
+                        <input type="submit" value="SAVE" class="btn btn-primary " style="width:100%; margin-top:0px;" />
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
